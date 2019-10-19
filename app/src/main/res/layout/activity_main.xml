@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <variable
+            name="viewModel"
+            type="com.alyndroid.architecturepatternstutorialshomework.ui.MainActivityViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.MainActivity">
+
+        <Button
+            android:id="@+id/plus_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()-> viewModel.getSUM()}"
+            android:text="@string/plus"
+            app:layout_constraintBaseline_toBaselineOf="@+id/mul_button"
+            app:layout_constraintEnd_toStartOf="@+id/div_button"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/mul_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()-> viewModel.getMUL()}"
+            android:text="@string/multi"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/div_button"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.853" />
+
+        <Button
+            android:id="@+id/div_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()-> viewModel.getDIV()}"
+            android:text="@string/div"
+            app:layout_constraintBaseline_toBaselineOf="@+id/mul_button"
+            app:layout_constraintEnd_toStartOf="@+id/mul_button"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/plus_button" />
+
+        <TextView
+            android:id="@+id/mul_result_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{Integer.toString(viewModel.MUL_MutableLiveData)}"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/mul_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/div_result_textView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.631"
+            tools:text="mul result" />
+
+        <TextView
+            android:id="@+id/plus_result_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{Integer.toString(viewModel.SUM_MutableLiveData)}"
+            android:textSize="20sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/div_result_textView"
+            app:layout_constraintEnd_toStartOf="@+id/div_result_textView"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="plus result" />
+
+        <TextView
+            android:id="@+id/div_result_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{Integer.toString(viewModel.DIV_MutableLiveData)}"
+            android:textSize="20sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/mul_result_textView"
+            app:layout_constraintEnd_toStartOf="@+id/mul_result_textView"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/plus_result_textView"
+            tools:text="div result" />
+
+        <TextView
+            android:id="@+id/text_first_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{Integer.toString(viewModel.NumberModelMutableLiveData.firstNum)}"
+            android:textSize="50sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/text_scund_num"
+            app:layout_constraintEnd_toStartOf="@+id/text_scund_num"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/text_scund_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{Integer.toString(viewModel.NumberModelMutableLiveData.secondNum)}"
+            android:textSize="50sp"
+            app:layout_constraintBottom_toTopOf="@+id/mul_result_textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/text_first_num"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.554" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
